@@ -1,6 +1,14 @@
-#include <linux/init.h>
-#include <linux/module.h>
 #include <linux/kernel.h>
+#include <linux/module.h>
+#include <linux/netfilter.h>
+#include <linux/netfilter_ipv4.h>
+#include <linux/ip.h>
+#include <linux/skbuff.h>
+#include <linux/tcp.h>
+#include <linux/inet.h>
+
+
+
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Erik Beitel");
 MODULE_DESCRIPTION("A skeleton Linux module for a firewall.");
