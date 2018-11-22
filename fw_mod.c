@@ -22,7 +22,12 @@ unsigned int hook_func_incoming(void *priv,
                                 struct sk_buff *skb, 
                                 const struct nf_hook_state *state)
 {
-  return NF_DROP;           /* Drop ALL packets */
+  char* dev_name = state->in->name;
+  if( !strcmp(dev_name, "lo")) {		  
+    return NF_DROP;           /* Drop ALL packets */
+  } else {
+    return NF_ACCEPT;
+  }
 }
 
 //Called when module loaded using 'insmod'
