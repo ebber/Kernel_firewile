@@ -41,7 +41,7 @@ int init_module()
   nfho.priority = NF_IP_PRI_FIRST;  
   
   //register hook
-  nf_register_net_hook(&nfho);                    
+  nf_register_net_hook(&init_net, &nfho);                    
   
   printk(KERN_INFO "simple firewall loaded\n");
   return 0;
@@ -51,7 +51,7 @@ int init_module()
 void cleanup_module()
 { 
   printk("simple firewall unloaded\n");
-  nf_unregister_net_hook(&nfho);                //cleanup and unregister hook
+  nf_unregister_net_hook(&init_net, &nfho);                //cleanup and unregister hook
 }
 
 //module_init(mod_init);
